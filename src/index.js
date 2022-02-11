@@ -1,36 +1,16 @@
-import { click } from '@testing-library/user-event/dist/click';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useFormik, Formik, Field, Form } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import './index.css';
-function validateEmail(value) {
-  let error;
-  if (!value) {
-    error = 'Email Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'Invalid email address';
-  }
-  return error;
-}
+import * as Yup from 'yup';
 
-function validateUsername(value) {
-  let error;
-  if (!value) {
-    error = 'Name Required';
+const validate = Yup.object(
+  {
+    Name: Yup.string().max(20, 'Name should not exceed 20!').required('Name Required'),
+    Location: Yup.string().required('Location Required'),
+    Email: Yup.string().email('Invalid email address').required('Email Required')
   }
-  if (value.length > 20) {
-    error = 'Name should not exceed 20!';
-  }
-  return error;
-}
-function validateLocation(value) {
-  let error;
-  if (!value) {
-    error = 'Location Required';
-  }
-  return error;
-}
-
+)
 const Employee = () => {
 
   return (
@@ -40,20 +20,21 @@ const Employee = () => {
         Id: '',
         Name: '',
         Location: '',
-        Salary: ''
+        Email: ''
       }} onSubmit={(values) => {
-        console.log(values)
+        alert(JSON.stringify(values))
       }}
+        validationSchema={validate}
       >
         {({ errors, touched }) => (
           <Form >
             <p>Id: <Field name="Id" type="text" /></p>
-            <p>Name: <Field name="Name" type="text" validate={validateUsername} />
-            {errors.Name && touched.Name && <div className="error">{errors.Name}</div>}</p>
-            <p>Location: <Field name="Location" type="text" validate={validateLocation}/>
-            {errors.Location && touched.Location && <div className="error">{errors.Location}</div>}</p>
-            <p>Email: <Field name="Email" type="text" validate={validateEmail}/>
-            {errors.Email && touched.Email && <div className="error">{errors.Email}</div>}</p>
+            <p>Name: <Field name="Name" type="text" />
+              {errors.Name && touched.Name && <div className="error">{errors.Name}</div>}</p>
+            <p>Location: <Field name="Location" type="text" />
+              {errors.Location && touched.Location && <div className="error">{errors.Location}</div>}</p>
+            <p>Email: <Field name="Email" type="text" />
+              {errors.Email && touched.Email && <div className="error">{errors.Email}</div>}</p>
             <button type="submit">Submit</button>
           </Form>
         )}

@@ -1,23 +1,117 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.test{
+.test {
   color: royalblue;
 }
-.error{
+.error {
   color: red;
 }
-.bor{
+.bor {
   border: 10px black;
+}
+
+.modal {
+  background-color: whitesmoke;
+  position: fixed;
+  height: 50%;
+  width: 50%;
+  top: 25;
+  left: 25%;
+  align-items: center;
+}
+
+.modal button {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+.Luca{
+  color: aqua;
+}
+.SplitPanel{
+  display: flex;
+}
+.test-border{
+  border: 3px solid cyan;
+
+}
+.row-border{
+  border: 2px solid black;
+}
+.content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#customers tbody {
+  display: block;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+#customers thead, #customers tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+.box{
+  position: relative;
+}
+
+.input {
+  padding: 10px;
+  width: 180px;
+  height: 40px;
+  background: none;
+  border: 4px solid #04AA6D;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-family: Comic Sans MS;
+  font-size: 26px;
+  color: #04AA6D;
+  outline: none;
+  transition: .5s;
+}
+.box:hover input{
+  width: 350px;
+  background: #3b3640;
+  border-radius: 10px;
 }
